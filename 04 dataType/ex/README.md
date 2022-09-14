@@ -119,3 +119,130 @@ var last = "An";
 // ES5: 문자열 연결
 console.log("My name is " + first + " " + last + "."); // My name is So Hee An.
 ```
+
+# 06-13
+
+```javascript
+var first = "So Hee";
+var last = "An";
+
+// ES6: 표현식 삽입
+console.log(`My name is ${first} ${last}.`); // My name is So Hee An.
+```
+
+# 06-14
+
+```javascript
+console.log(`1 + 2 = ${1 + 2}`); // 1 + 2 = 3
+```
+
+# 06-15
+
+```javascript
+console.log("1 + 2 = ${1 + 2}"); // 1 + 2 = ${1 + 2}
+```
+
+# 06-16
+
+```javascript
+var foo = true;
+console.log(foo); // true
+
+foo = false;
+console.log(foo); // false
+```
+
+# 06-17
+
+```javascript
+var foo;
+console.log(foo); // undefined
+```
+
+# 06-18
+
+```javascript
+var foo = "An";
+
+// 이전에 할당되어 있던 값에 대한 참조를 제거. foo 변수는 더 이상 'Lee'를 참조하지 않는다.
+// 유용해 보이지는 않는다. 변수의 스코프를 좁게 만들어 변수 자체를 재빨리 소멸시키는 편이 낫다.
+foo = null;
+```
+
+# 06-19
+
+```html
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            var element = document.querySelector(".myClass");
+
+            // HTML 문서에 myClass 클래스를 갖는 요소가 없다면 null을 반환한다.
+            console.log(element); // null
+        </script>
+    </body>
+</html>
+```
+
+# 06-20
+
+```javascript
+// 심벌 값 생성
+var key = Symbol("key");
+console.log(typeof key); // symbol
+
+// 객체 생성
+var obj = {};
+
+// 이름이 충돌할 위험이 없는 유일무이한 값인 심벌을 프로퍼티 키로 사용한다.
+obj[key] = "value";
+console.log(obj[key]); // value
+```
+
+# 06-21
+
+```javascript
+var score = 100;
+```
+
+# 06-22
+
+```c
+// c 변수에는 1바이트 정수 타입의 값(-128 ~ 127)만을 할당할 수 있다.
+char c;
+
+// num 변수에는 4바이트 정수 타입의 값(-2,124,483,648 ~ 2,124,483,647)만을 할당할 수 있다.
+int num;
+```
+
+# 06-23
+
+```javascript
+var foo;
+console.log(typeof foo); // undefined
+
+foo = 3;
+console.log(typeof foo); // number
+
+foo = "Hello";
+console.log(typeof foo); // string
+
+foo = true;
+console.log(typeof foo); // boolean
+
+foo = null;
+console.log(typeof foo); // object
+
+foo = Symbol(); // 심벌
+console.log(typeof foo); // symbol
+
+foo = {}; // 객체
+console.log(typeof foo); // object
+
+foo = []; // 배열
+console.log(typeof foo); // object
+
+foo = function () {}; // 함수
+console.log(typeof foo); // function
+```
