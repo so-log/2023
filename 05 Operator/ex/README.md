@@ -307,3 +307,194 @@ else result = "짝수";
 
 console.log(result); // 짝수
 ```
+
+# 07-23
+
+```javascript
+var x = 10;
+
+// if...else 문은 표현식이 아닌 문이다. 따라서 값처럼 사용할 수 없다.
+var result = if (x % 2) { result = '홀수'; } else { result = '짝수'; };
+// SyntaxError: Unexpected token if
+```
+
+# 07-24
+
+```javascript
+var x = 10;
+
+// 삼항 조건 연산자 표현식은 표현식인 문이다. 따라서 값처럼 사용할 수 있다.
+var result = x % 2 ? "홀수" : "짝수";
+console.log(result); // 짝수
+```
+
+# 07-25
+
+```javascript
+// 논리합(||) 연산자
+true || true; // -> true
+true || false; // -> true
+false || true; // -> true
+false || false; // -> false
+
+// 논리곱(&&) 연산자
+true && true; // -> true
+true && false; // -> false
+false && true; // -> false
+false && false; // -> false
+
+// 논리 부정(!) 연산자
+!true; // -> false
+!false; // -> true
+```
+
+# 07-26
+
+```javascript
+// 암묵적 타입 변환
+!0; // -> true
+!"Hello"; // -> false
+```
+
+# 07-27
+
+```javascript
+// 단축 평가
+"Cat" && "Dog"; // -> 'Dog'
+```
+
+# 07-28
+
+```javascript
+!(x || y) === (!x && !y);
+!(x && y) === (!x || !y);
+```
+
+# 07-29
+
+```javascript
+var x, y, z;
+
+(x = 1), (y = 2), (z = 3); // 3
+```
+
+# 07-30
+
+```javascript
+10 * 2 + 3; // -> 23
+
+// 그룹 연산자를 사용하여 우선순위를 조절
+10 * (2 + 3); // -> 50
+```
+
+# 07-31
+
+```javascript
+typeof ""; // -> "string"
+typeof 1; // -> "number"
+typeof NaN; // -> "number"
+typeof true; // -> "boolean"
+typeof undefined; // -> "undefined"
+typeof Symbol(); // -> "symbol"
+typeof null; // -> "object"
+typeof []; // -> "object"
+typeof {}; // -> "object"
+typeof new Date(); // -> "object"
+typeof /test/gi; // -> "object"
+typeof function () {}; // -> "function"
+```
+
+# 07-32
+
+```javascript
+var foo = null;
+
+typeof foo === null; // -> false
+foo === null; // -> true
+```
+
+# 07-33
+
+```javascript
+// undeclared 식별자를 선언한 적이 없다.
+typeof undeclared; // -> undefined
+```
+
+# 07-34
+
+```javascript
+2 ** 2; // -> 4
+2 ** 2.5; // -> 5.65685424949238
+2 ** 0; // -> 1
+2 ** -2; // -> 0.25
+```
+
+# 07-35
+
+```javascript
+Math.pow(2, 2); // -> 4
+Math.pow(2, 2.5); // -> 5.65685424949238
+Math.pow(2, 0); // -> 1
+Math.pow(2, -2); // -> 0.25
+```
+
+# 07-36
+
+```javascript
+// 지수 연산자의 결합 순서는 우항에서 좌항이다. 즉, 우결합성을 갖는다.
+2 ** (3 ** 2); // -> 512
+Math.pow(2, Math.pow(3, 2)); // -> 512
+```
+
+# 07-37
+
+```javascript
+-5 ** 2;
+// SyntaxError: Unary operator used immediately before exponentiation expression.
+// Parenthesis must be used to disambiguate operator precedence
+
+(-5) ** 2; // -> 25
+```
+
+# 07-38
+
+```javascript
+var num = 5;
+num **= 2; // -> 25
+```
+
+# 07-39
+
+```javascript
+2 * 5 ** 2; // -> 50
+```
+
+# 07-40
+
+```javascript
+var x;
+
+// 할당 연산자는 변수 값이 변하는 부수 효과가 있다.
+// 이는 x 변수를 사용하는 다른 코드에 영향을 준다.
+x = 1;
+console.log(x); // 1
+
+// 증가/감소 연산자(++/--)는 피연산자의 값을 변경하는 부수 효과가 있다.
+// 피연산자 x의 값이 재할당되어 변경된다. 이는 x 변수를 사용하는 다른 코드에 영향을 준다.
+x++;
+console.log(x); // 2
+
+var o = { a: 1 };
+
+// delete 연산자는 객체의 프로퍼티를 삭제하는 부수 효과가 있다.
+// 이는 o 객체를 사용하는 다른 코드에 영향을 준다.
+delete o.a;
+console.log(o); // {}
+```
+
+# 07-41
+
+```javascript
+// 그룹 연산자를 사용하여 우선순위를 명시적으로 조절
+10 * (2 + 3); // -> 50
+```
