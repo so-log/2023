@@ -60,8 +60,9 @@ swtich (month) {
 
 -   만약 `if - else` 문으로 해결할 수 있다면 → `switch` 문보다 `if - else` 문을 사용하는 편이 좋다.
 -   조건식이 너무 많아서 `if - else` 문보다 `switch` 문을 사용했을 때 `가독성이 더 좋다면` → `switch` 문을 사용하는 편이 좋다.
-    <br>
-    <br>
+
+<br>
+<br>
 
 # 반복문
 
@@ -120,3 +121,42 @@ foo: {
 
 <br>
 <br>
+
+# Continue 문
+
+> `continue 문` 은 반복문의 코드 블록 실행을 `현 시점에서 중단하고` , `반복문의 증감식으로 실행 흐름을 이동시킨다.` ( break 문처럼 반복문을 탈출하지는 않는다. )
+
+-   `if 문` 내에서 `실행해야 할 코드가 한줄` 이라면 → 반복문 내에서 `continue 문`을 사용할 필요는 없다.
+-   하지만, `if 문` 내에서 `실행햐야 할 코드가 길다면` → `들여쓰기가 한 단계 더 깊어지므로` , `continue 문`을 사용하는 편이 가독성이 더 좋을 수 있다.
+
+```jsx
+// if문 내에서 여러 코드 작성해야 할 경우 -> continue 문을 사용하지 않았을 경우
+var arr = [1, 2, 3, 4, 5];
+var target = 3;
+var count = 0;
+
+for (var i = 0; i < arr.length; i++) {
+    // arr[i] 가 target 이하라면 count 증감
+    if (arr[i] <= target) {
+        count++;
+        // code...
+        // code...
+        // code...
+    }
+}
+
+// if문 내에서 여러 코드 작성해야 할 경우 -> continue 문을 사용한 경우 -> depth가 하나 줄어들었다.
+var arr = [1, 2, 3, 4, 5];
+var target = 3;
+var count = 0;
+
+for (var i = 0; i < arr.length; i++) {
+    // arr[i] 가 target 초과이면 count 증감하지 않는다.
+    if (arr[i] > target) continue;
+
+    count++;
+    // code...
+    // code...
+    // code...
+}
+```
