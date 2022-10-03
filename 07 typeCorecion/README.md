@@ -17,3 +17,66 @@
 -   암묵적 타입 변환이 발생하면 → `문자열(string), 숫자(number), 불리언(boolean)` 과 같은 `원시 타입(primitive type)` 중 하나로 타입을 자동 변환
 
 <br>
+
+### 문자열 타입으로 변환
+
+```jsx
+// 🎯 주의할 것 중심
+
+// 숫자 타입
+NaN + '';             // "NaN"
+Infinity + ''         // "Infinity"
+
+// null 타입
+null + '';            // "null"
+
+// undefined 타입
+undefined + '';       // "undefined"
+
+// 심벌 타입
+(Symbol()) + '';      // TypeError: Cannot convert a Symbol value to a string
+
+// 객체 타입
+({}) + '';            // "[object Object]"
+Math + '';            // "[object Math]"
+[] + '';              // ""
+[10, 20] + '';        // "10,20"
+(function(){}_ + '';  // "function(){}"
+Array + '';           // "function Array() { [native code] }"
+```
+
+<br>
+
+### 숫자 타입으로 변환
+
+```jsx
+// 문자열 타입
++""; // 0
++"0"; // 0
++"1"; // 1
++"string" + // NaN
+    // 불리언 타입
+    true; // 1
++false; // 0
+
+// null 타입
++null; // 0
+
+// undefined 타입
++undefined; // NaN
+
+// 심벌 타입
++Symbol(); // TypeError: Cannot convert a Symbol value to a number
+
+// 객체 타입
++{}; // NaN
++[]; // 0
++[10, 20]; // NaN
++function () {}; // NaN
+```
+
+-   `빈 문자열(''), 빈 배열([]), null, false` → `0`
+-   `true` → `1`
+-   `객체, 빈 배열이 아닌 배열(= 값이 있는 배열), undefined` → `NaN` ( 주의 ! )
+
+<br>
