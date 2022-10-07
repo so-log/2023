@@ -302,3 +302,63 @@ getStringLength(); // 0
 ```
 
 <br>
+
+### 옵셔널 체이닝 연산자
+
+> `?.` = `옵셔널 체이닝(optional chaining) 연산자`
+
+-   좌항의 피연산자가 `null 또는 undefined` → `undefined 반환`
+-   그렇지 않은 경우 → `우항의 프로퍼티를 참조`
+
+```jsx
+var elem = null;
+var value = elem?.value; // undefined
+```
+
+-   객체를 가리키기를 기대하는 변수가 null 또는 undefined가 아닌지 확인하고 프로퍼티를 안전하게 참조할 때 유용
+-   옵셔널 체이닝 도입 이전에는
+    -   `논리곱(&&)을 사용한 단축 평가`를 통해 → 변수가 null 또는 undefined 인지 확인했음
+
+```jsx
+var elem = null;
+var value = elem && elem.value; // null (elem의 null)
+```
+
+```jsx
+// 💡 논리곱(&&) 연산자 vs 옵셔널 체이닝 연산자
+
+// 💩 논리곱(&&) 연산자 = 좌항 피연산자가 Falsy값이면, 좌항 피연산자를 그대로 반환한다. (단, 0 또는 ''은 객체로 평가될 때도 있다.)
+var str = ""; //
+var length = str && str.length; // ''
+
+// 👍 옵셔널 체이닝 = 좌항 피연산자가 Falsy값이라도 null 또는 undefined 만 아니면, 우항의 프로퍼티를 참조한다.
+var str = "";
+var length = str?.length; // 0
+```
+
+<br>
+
+### null 병합 연산자
+
+> `??` = `병합 연산자(nullish coalescing) 연산자`
+
+-   좌항의 피연산자가 `null 또는 undefined` → `우항의 피연산자를 반환`
+-   그렇지 않은 경우 → `좌항의 프로퍼티를 참조`
+
+```jsx
+var foo = null ?? "default string"; // "default string"
+```
+
+-   `변수에 기본값을 설정할 때 유용 !`
+-   null 병합 연산자 도입 이전에는
+    -   `논리합(||)을 사용한 단축 평가` 를 통해 → 변수에 기본값을 설정했음
+
+```jsx
+// 💡 논리합(||) 연산자 vs null 병합 연산자
+
+// 💩 논리합(||) 연산자 = 좌항의 피연산자가 Falsy값이면, 우항의 피연산자를 반환 (단, 0 이나 ''은 기본값으로서 유호하다면 예기치 않은 동작이 발생 !)
+var foo = "" || "default string"; // "default string"
+
+// 👍 null 병합 연산자 = 좌항의 피연산자가 Falsy값이라도 null 또는 undefined 가 아니면, 좌항의 피연산자를 그대로 반환한다.
+var foo = "" ?? "default string"; // ''
+```
