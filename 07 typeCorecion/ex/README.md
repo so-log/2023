@@ -52,3 +52,75 @@ if (1) {
 ```javascript
 `1 + 1 = ${1 + 1}`; // -> "1 + 1 = 2"
 ```
+
+# 09-06
+
+```javascript
+// 숫자 타입
+0 + ''         // -> "0"
+-0 + ''        // -> "0"
+1 + ''         // -> "1"
+-1 + ''        // -> "-1"
+NaN + ''       // -> "NaN"
+Infinity + ''  // -> "Infinity"
+-Infinity + '' // -> "-Infinity"
+
+// 불리언 타입
+true + ''  // -> "true"
+false + '' // -> "false"
+
+// null 타입
+null + '' // -> "null"
+
+// undefined 타입
+undefined + '' // -> "undefined"
+
+// 심벌 타입
+(Symbol()) + '' // -> TypeError: Cannot convert a Symbol value to a string
+
+// 객체 타입
+({}) + ''           // -> "[object Object]"
+Math + ''           // -> "[object Math]"
+[] + ''             // -> ""
+[10, 20] + ''       // -> "10,20"
+(function(){}) + '' // -> "function(){}"
+Array + ''          // -> "function Array() { [native code] }"
+```
+
+# 09-07
+
+```javascript
+1 - "1"; // -> 0
+1 * "10"; // -> 10
+1 / "one"; // -> NaN
+```
+
+# 09-08
+
+```javascript
+"1" > 0; // -> true
+```
+
+# 09-09
+
+```javascript
+// 문자열 타입
++"" + // -> 0
+    "0" + // -> 0
+    "1" + // -> 1
+    "string" + // -> NaN
+    // 불리언 타입
+    true + // -> 1
+    false + // -> 0
+    // null 타입
+    null + // -> 0
+    // undefined 타입
+    undefined + // -> NaN
+    // 심벌 타입
+    Symbol() + // -> ypeError: Cannot convert a Symbol value to a number
+    // 객체 타입
+    {} + // -> NaN
+    [] + // -> 0
+    [10, 20] + // -> NaN
+    function () {}; // -> NaN
+```
