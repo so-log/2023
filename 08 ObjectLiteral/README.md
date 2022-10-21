@@ -53,3 +53,35 @@ console.log(person); // { name: 'Wi', sayHello: [Function: sayHello] }
 
 <br>
 <br>
+
+# 프로퍼티
+
+> 객체는 `프로퍼티의 집합`, 프로퍼티는 `키와 값` 으로 구성
+
+-   `프로퍼티 키(key)` : 빈 문자열( `''` ) 을 포함하는 모든 `문자열(string)` 또는 `심벌(symbol) 값`
+-   `프로퍼티 값(value)` : 자바스크립트에서 사용할 수 있는 모든 값
+
+```jsx
+var person = {
+    name: "WI", // 프로퍼티 키는 name, 프로퍼티 값은 "WI"
+    age: 100, // 프로퍼티 키는 age, 프로퍼티 값은 100
+};
+```
+
+<br>
+
+> 프로퍼티 키는 프로퍼티 값에 접근할 수 있는 이름으로서 `식별자 역할`
+
+-   하지만 반드시 [식별자 네이밍 규칙](https://javascript.plainenglish.io/rules-to-follow-when-naming-an-identifier-in-javascript-a992c103bc8c) 을 따라야 하는 것은 아니다.
+-   자바스크립트에서 `사용 가능한 유요한 이름인 경우`, `따옴표( '' or "")` 를 생략할 수 있다.
+-   반대로 말하면 식별자 네이밍 규칙을 따르지 않는 이름에는 `반드시 따옴표를 사용해야 한다.`
+
+```jsx
+var person = {
+	firstName: 'Young-min',  // 식별자 네이밍 규칙을 준수한 프로퍼티 키
+	'last-name': 'WI',       // 식별자 네이밍 규칙을 준수하지 않은 프로퍼티 키 ( 따옴표를 사용해 문자열 형태 유지 )
+  last-name: 'WI'          // SyntaxError: Unexpected token ( 식별자 네이밍 규칙을 준수하지 않은 프로퍼티 키 ( 따옴표를 사용하지 않을 경우 - 표현식으로 해석 ) )
+};
+```
+
+<br>
