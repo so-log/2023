@@ -214,3 +214,36 @@ console.log(obj); // { 'prop-1': 1, 'prop-2': 2, 'prop-3': 3 }
 ```
 
 <br>
+
+### 메서드 축약 표현
+
+-   `ES5`
+
+```jsx
+var obj = {
+    name: "WI",
+
+    // 프로퍼티 값으로 "함수를 할당"
+    sayHi: function () {
+        console.log(`Hi! ${this.name}`);
+    },
+};
+
+obj.sayHi(); // Hi! WI
+```
+
+-   `ES6`
+    -   단, `메서드 축약 표현` 으로 정의한 메서드는 `프로퍼티에 할당한 함수(ES5)` 와 다르게 동작한다.
+
+```jsx
+const obj = {
+    name: "WI",
+
+    // 메서드 축약 표현 ( 함수 선언식 필요 X )
+    sayHi() {
+        console.log(`Hi! ${this.name}`);
+    },
+};
+
+obj.sayHi(); // Hi! WI
+```
