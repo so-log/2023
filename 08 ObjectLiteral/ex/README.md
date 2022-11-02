@@ -293,3 +293,43 @@ while (true) {
     if (count === 3) break;
 } // 0 1 2
 ```
+
+# 08-17
+
+```javascript
+var count = 0;
+
+// count가 3보다 작을 때까지 코드 블록을 계속 반복 실행한다.
+do {
+    console.log(count);
+    count++;
+} while (count < 3); // 0 1 2
+```
+
+# 08-18
+
+```javascript
+if (true) {
+  break; // Uncaught SyntaxError: Illegal break statement
+}
+```
+
+# 08-19
+
+```javascript
+// foo라는 레이블 식별자가 붙은 레이블 문
+foo: console.log("foo");
+```
+
+# 08-20
+
+```javascript
+// foo라는 식별자가 붙은 레이블 블록문
+foo: {
+    console.log(1);
+    break foo; // foo 레이블 블록문을 탈출한다.
+    console.log(2);
+}
+
+console.log("Done!");
+```
