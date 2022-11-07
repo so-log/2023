@@ -82,3 +82,50 @@ var add = new Function("x", "y", "return x + y");
 -   함수도 이와 같다.
     -   `함수 리터럴` 이 단독으로 사용된다. → `함수 선언문`으로 해석
     -   `함수 리터럴` 이 값으로 평가되어야 하는(변수에 할당 or 피연산자로..) 문맥 → `함수 리터럴 표현식` 으로 해석
+
+# 함수 선언문과 함수 리터럴 표현식
+
+> 이 둘은 함수가 생성되는 것은 동일, 다만 `호출에서 차이가 있다.`
+
+```jsx
+// 1️⃣ 함수 선언문으로 함수 호출
+function foo() {
+    console.log("foo"); // foo
+}
+foo();
+
+// 2️⃣ 함수 리터럴 표현식으로 함수 호출
+(function bar() {
+    console.log("bar"); // ReferenceError: bar is not defined
+});
+bar();
+```
+
+### 함수 리터럴
+
+> 함수 이름은 `함수 몸체 내에서만 참조할 수 있는 식별자다.`
+
+-   함수 몸체 외부에서는 함수 이름으로 `함수를 참조할 수 없다.` = 함수 몸체 외부에서는 함수 이름으로 `함수를 호출할 수 없다.`
+-   즉, 함수를 가리키는 `식별자가 없다는 것과 같은 의미`
+
+1️⃣ 함수 리터럴 표현식으로 함수 호출 시 메모리 구조
+
+![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fs0kP8%2FbtrmFokNtjQ%2FhAcXV05B1iZKuTkFCv1uwk%2Fimg.png)
+
+2️⃣ 함수 선언문으로 함수 호출 시 메모리 구조
+
+-   자바스크립트 엔진은 `함수 선언문을 해석해 함수 객체를 생성`
+-   생성된 함수 객체를 가리키는 `유효한 식별자가 필요`
+-   따라서, 자바스크립트 엔진은 생성된 함수를 호출하기 위해 함수 이름과 동일한 이름의 식별자를 `암묵적으로 생성하고, 거기에 함수 객체를 할당한다.`
+
+![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmPSbv%2FbtrmCDb8XWF%2FxG62C25YGR06nK0q64sIt0%2Fimg.png)
+
+> 결국, 함수는 함수 이름으로 호출하는 것이 아니라, `함수 객체를 가리키는 식별자로 호출하는 것이다.`
+
+![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrJRks%2FbtrmCCK4o7a%2FwpRrPGMlpdm7kxBnk96uUK%2Fimg.png)
+
+-   위 코드는 `함수 표현식` 이다.
+
+```jsx
+💡 결론적으로, 자바스크립트 엔진은 "함수 선언문"을 "함수 표현식으로 변환" → "함수 객체를 생성"
+```
