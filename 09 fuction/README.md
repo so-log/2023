@@ -129,3 +129,86 @@ bar();
 ```jsx
 💡 결론적으로, 자바스크립트 엔진은 "함수 선언문"을 "함수 표현식으로 변환" → "함수 객체를 생성"
 ```
+
+<br />
+<br />
+
+# 함수 호출 & 반환문
+
+-   함수의 `매개변수(parameter)` 는 함수 몸체 내부에서만 참조할 수 있다. 즉, `매개변수의 스코프(유효 범위)는 함수 내부다.`
+-   함수는 매겨변수의 개수와 인수(argument)의 개수가 일치하지 않아도 된다.
+    -   인수가 매개변수보다 부족하면, 나머지 매개변수에 대해서는 `암묵적으로 undefined`
+    -   인수가 매개변수보다 많으면, 모든 인수는 `암묵적으로 arguments 객체에 프로퍼티로 보관`
+
+```jsx
+function add(x, y) {
+    console.log(x, y); // 1 2
+    return x + y;
+}
+
+add(1, 2);
+console.log(x, y); // 💩 ReferenceError: x is not defined
+
+// 매개변수의 개수 > 인수의 개수 = 나머지 매개변수 undefined
+function mul(x, y) {
+    console.log(x, y); // 1 undefined
+}
+mul(1);
+
+// 매개변수의 개수 < 인수의 개수 = arguments 에 보관
+function sub(x, y) {
+    console.log(arguments); // [Arguments] { '0': 3, '1': 2, '2': 1 }
+    return x - y;
+}
+sub(3, 2, 1); // 1
+```
+
+<br />
+
+### 자바스크립트 문법상의 문제
+
+```
+1️⃣ 자바스크립트 함수는 매개변수와 인수의 개수가 일치하는지 확인하지 않는다.
+2️⃣ 자바스크립트는 "동적 타입 언어"다. 따라서 자바스크립트 함수는 매개변수의 "타입을 사전에 지정할 수 없다."
+```
+
+-   따라서, 자바스크립트의 경우 `함수를 정의할 때, 인수가 전달되었는지 확인할 필요가 있다.`
+    1. `typeof 연산자` 를 사용하는 방법
+    2. 인수가 전달되지 않은 경우 `단축 평가` 를 사용하는 방법
+    3. `매개변수에 기본값(default value)` 을 할당하는 방법
+    4. `정적 타입 선언` 이 가능한 `Typescript` 사용하는 방법
+
+```jsx
+// 1️⃣ typeof 연산자로 arguments 문제 방지
+function add(x, y) {
+    if (typeof x !== "number" || typeof y !== "number") {
+        throw new TypeError("인수는 모두 숫자(number)값 이어야 합니다.");
+    }
+
+    return x + y;
+}
+console.log(add(1, 2)); // 3
+console.log(add(2)); // TypeError: 인수는 모두 숫자(number)값 이어야 합니다.
+console.log(add("a", "b")); // TypeError: 인수는 모두 숫자(number)값 이어야 합니다.
+
+// 2️⃣ "단축 평가"로 arguments 문제 방지
+function mul(a, b, c) {
+    a = a || 1;
+    b = b || 1;
+    c = c || 1;
+
+    return a * b * c;
+}
+console.log(mul(1, 2, 3)); // 6
+console.log(mul(1, 2)); // 2
+console.log(mul(1)); // 1
+console.log(mul()); // 1
+
+// 3️⃣ parameter default value 설정으로 argument 문제 방지
+function sub(a = 0, b = 0) {
+    return a - b;
+}
+console.log(sub(10, 9)); // 1
+console.log(sub(10)); // 10
+console.log(sub()); // 0
+```
