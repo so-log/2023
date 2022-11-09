@@ -212,3 +212,52 @@ console.log(sub(10, 9)); // 1
 console.log(sub(10)); // 10
 console.log(sub()); // 0
 ```
+
+<br />
+<br />
+
+# 값에 의한 호출 vs 참조에 의한 호출
+
+-   `값에 의한 호출(call by value)` : 함수 호출시 매개변수에 `원시 값(primitive value)을 전달`
+-   `참조에 의한 호출(call by reference)` : 함수 호출시 매개변수에 `객체(object) 를 전달`
+
+<br />
+
+### 값에 의한 호출
+
+-   원시 값은 `변경 불가능한 값(immutable value)` 성질
+-   즉, 원시 타입의 argument 는 `값 자체가 복사되어 매개변수에 전달`
+-   이 값을 변경(재할당을 통한 변경)해도 `원본은 훼손되지 않는다. ( side effect X )`
+
+<br />
+
+### 참조에 의한 호출
+
+-   객체는 `변경 가능한 값(mutable value)` 성질
+-   즉, 객체 argument 는 `참조 값이 복사되어 매개변수에 전달`
+-   참조 값을 통해 전달한 객체를 변경할 경우 `원본이 훼손된다. ( side effect O )`
+
+```
+[ 💩 참조에 의한 호출의 문제점 ]
+
+= 객체가 변경될 수 있기 때문에 "상태 변화 추적"이 어렵다.
+```
+
+```jsx
+function changeVal(primitive, obj) {
+    primitive += 100;
+    obj.name = "WIEEE";
+}
+
+// 외부 상태
+var num = 100; // 원시 값
+var person = { name: "WI" }; // 객체
+
+console.log(num); // 100
+console.log(person); // { name: 'WI' }
+
+changeVal(num, person);
+
+console.log(num); // 100
+console.log(person); // { name: 'WIEEE' } 💩
+```
