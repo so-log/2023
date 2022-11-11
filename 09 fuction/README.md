@@ -261,3 +261,34 @@ changeVal(num, person);
 console.log(num); // 100
 console.log(person); // { name: 'WIEEE' } 💩
 ```
+
+![원시 값 전달과 참조 값 전달](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbgAgqP%2FbtrmEi0ScBA%2FwrhIYb7DMZRfh5wWQqoKMK%2Fimg.png)
+
+-   해결 방법 중
+    -   객체를 `불변 객체(immutable object)` 로 만들어 사용하는 것
+        -   객체의 복사본을 새롭게 생성하는 것은 비용(cost)이 원본 객체 규모에 따라 커질 수 있다.
+        -   하지만, 객체를 마치 원시 값처럼 변경 불가능한 값으로 동작하게 만들 수 있다.
+        -   방법으로는 `깊은 복사(deep copy)` 를 통해 새로운 객체를 생성하고 재할당한다. → `side effect X`
+
+```jsx
+[ 💡 순수 함수 ]
+
++ 외부 상태를 변경하지 않고 외부 상태에 의존하지도 않는 함수를 "순수 함수"
++ 순수 함수를 통해 부수효과(side effect)를 최대한 억제하고 오류를 피해 프로그램 안정성을 높인다. = "함수형 프로그래밍"
+```
+
+<br />
+<br />
+
+# 여러가지 함수
+
+-   `즉시 실행 함수(IIFE, Immediately Invoked Function Expression)`
+    > 함수 정의와 동시에 즉시 호출되는 함수
+    -   즉시 실행 함수는 `반드시 그룹 연산자( ... )로 감싸야 한다.`
+    -   즉시 실행 함수는 `함수 이름이 없는 익명 함수를 사용하는 것이 일반적`
+    ```jsx
+    // 즉시 실행 함수 - 일반적인 방식
+    (function () {
+        /// ...
+    })();
+    ```
