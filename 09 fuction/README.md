@@ -292,3 +292,63 @@ console.log(person); // { name: 'WIEEE' } 💩
         /// ...
     })();
     ```
+-   `재귀 함수(recursive function)`
+-   `중첩 함수(nested function) == 내부 함수(inner function)`
+
+    > 함수 내부에 정의된 함수 ( 중첩 함수를 포함하는 함수 = 외부 함수(outer function) )
+
+    -   중첩 함수는 외부 함수 내부에서만 호출할 수 있다.
+    -   중첩 함수는 자신을 포함하는 외부 함수를 돕는 `헬퍼 함수(helper function)` 역할을 한다.
+
+    ```jsx
+    function outer() {
+        var x = 1;
+
+        // 중첩 함수 == 내부 함수
+        function inner() {
+            var y = 2;
+
+            // 외부 함수의 변수 참조
+            console.log(x + y); // 3
+        }
+
+        inner();
+    }
+
+    outer();
+    ```
+
+-   `콜백 함수(callback function)`
+
+    > 함수의 매개변수(parameter)를 통해 다른 함수의 내부로 전달되는 함수
+
+    -   매개변수를 통해 함수의 외부에서 콜백 함수를 전달받은 함수를 `고차 함수(Higher-Order Function, HOF)` 라고 한다.
+    -   콜백 함수는 고차 함수에 의해 호출된다.
+    -   고차 함수는 필요에 따라 콜백 함수에 인수(argument)를 전달할 수 있다. → 그렇기 때문에 고차함수에 콜백함수 전달 시 `콜백 함수를 호출하지 않고 함수 자체를 전달해야 함`
+    -   함수는 `일급 객체` 이므로 함수의 매개변수를 통해 함수를 전달 가능
+    -   그로인해, `함수는 더 이상 내부로직에 강력히 의존하지 않고 외부에서 로직의 일부분을 함수로 전달받아 수행하므로 유연한 구조를 갖는다.`
+
+    ```jsx
+    // 외부에서 전달받은 func 를 n 만큼 반복 호출 - 고차 함수 repeat
+    function repeat(n, f) {
+        for (var i = 0; i < n; i++) {
+            f(i);
+        }
+    }
+
+    // 콜백 함수 정의 - logAll
+    var logAll = function (i) {
+        console.log(i);
+    };
+
+    // 반복 호출할 함수를 인수로 전달
+    repeat(5, logAll); // 0 1 2 3 4
+
+    // 콜백 함수 정의 - logOdd
+    var logOdd = function (i) {
+        if (i % 2) console.log(i);
+    };
+
+    // 반복 호출할 함수를 인수로 전달
+    repeat(5, logOdd); // 1 3
+    ```
