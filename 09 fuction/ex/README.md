@@ -100,3 +100,45 @@ Array + ''          // -> "function Array() { [native code] }"
 ```javascript
 "1" > 0; // -> true
 ```
+
+# 09-09
+
+```javascript
+// 문자열 타입
++"" + // -> 0
+    "0" + // -> 0
+    "1" + // -> 1
+    "string" + // -> NaN
+    // 불리언 타입
+    true + // -> 1
+    false + // -> 0
+    // null 타입
+    null + // -> 0
+    // undefined 타입
+    undefined + // -> NaN
+    // 심벌 타입
+    Symbol() + // -> ypeError: Cannot convert a Symbol value to a number
+    // 객체 타입
+    {} + // -> NaN
+    [] + // -> 0
+    [10, 20] + // -> NaN
+    function () {}; // -> NaN
+```
+
+# 09-10
+
+```javascript
+if ("") console.log(x);
+```
+
+# 09-11
+
+```javascript
+if ("") console.log("1");
+if (true) console.log("2");
+if (0) console.log("3");
+if ("str") console.log("4");
+if (null) console.log("5");
+
+// 2 4
+```
