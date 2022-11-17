@@ -142,3 +142,74 @@ if (null) console.log("5");
 
 // 2 4
 ```
+
+# 09-12
+
+```javascript
+// 아래의 조건문은 모두 코드 블록을 실행한다.
+if (!false) console.log(false + " is falsy value");
+if (!undefined) console.log(undefined + " is falsy value");
+if (!null) console.log(null + " is falsy value");
+if (!0) console.log(0 + " is falsy value");
+if (!NaN) console.log(NaN + " is falsy value");
+if (!"") console.log("" + " is falsy value");
+```
+
+# 09-13
+
+```javascript
+// 전달받은 인수가 Falsy 값이면 true, Truthy 값이면 false를 반환한다.
+function isFalsy(v) {
+    return !v;
+}
+
+// 전달받은 인수가 Truthy 값이면 true, Falsy 값이면 false를 반환한다.
+function isTruthy(v) {
+    return !!v;
+}
+
+// 모두 true를 반환한다.
+isFalsy(false);
+isFalsy(undefined);
+isFalsy(null);
+isFalsy(0);
+isFalsy(NaN);
+isFalsy("");
+
+// 모두 true를 반환한다.
+isTruthy(true);
+isTruthy("0"); // 빈 문자열이 아닌 문자열은 Truthy 값이다.
+isTruthy({});
+isTruthy([]);
+```
+
+# 09-14
+
+```javascript
+// 1. String 생성자 함수를 new 연산자 없이 호출하는 방법
+// 숫자 타입 => 문자열 타입
+String(1); // -> "1"
+String(NaN); // -> "NaN"
+String(Infinity); // -> "Infinity"
+// 불리언 타입 => 문자열 타입
+String(true); // -> "true"
+String(false); // -> "false"
+
+// 2. Object.prototype.toString 메서드를 사용하는 방법
+// 숫자 타입 => 문자열 타입
+(1).toString(); // -> "1"
+NaN.toString(); // -> "NaN"
+Infinity.toString(); // -> "Infinity"
+// 불리언 타입 => 문자열 타입
+true.toString(); // -> "true"
+false.toString(); // -> "false"
+
+// 3. 문자열 연결 연산자를 이용하는 방법
+// 숫자 타입 => 문자열 타입
+1 + ""; // -> "1"
+NaN + ""; // -> "NaN"
+Infinity + ""; // -> "Infinity"
+// 불리언 타입 => 문자열 타입
+true + ""; // -> "true"
+false + ""; // -> "false"
+```
