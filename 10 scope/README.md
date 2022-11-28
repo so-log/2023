@@ -85,3 +85,33 @@ PC에서 "동일한 파일 이름" 이 스코프를 통한 식별자 결정 가�
 + "중첩함수(nested function)" = 함수 몸체 내부에서 함수가 정의된 것
 + "외부함수(outer function)" = 중첩 함수를 포함하는 함수
 ```
+
+> `스코프체인(scope chain)` = 스코프는 함수의 중첩에 의해 `계층적 구조를 갖는다.`
+
+![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbRWXKo%2FbtrmoqxGHIm%2FcyK2AY7KBpFPGWjKgAtlR0%2Fimg.png)
+
+![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FKB61b%2FbtrmtfvZhjZ%2FEBV5IMeUh1oeDHUAOgtC7K%2Fimg.png)
+
+-   변수 참조 시, 자바스크립트 엔진은 스코프 체인을 통해 변수를 참조하는 코드의 스코프에서 시작하여 `상위 스코프 방향으로 이동하며` 선언된 `변수(= 식별자)를 검색(= 결정, identifier resolution)한다.`
+
+<br />
+
+### 스코프 체인에 의한 함수 검색
+
+```jsx
+// 전역 함수
+function foo() {
+    console.log("global function foo");
+}
+
+function bar() {
+    // 중첩 함수
+    function foo() {
+        console.log("local function foo");
+    }
+
+    foo(); // local function foo
+}
+
+bar();
+```
