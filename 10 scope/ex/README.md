@@ -73,3 +73,26 @@ var foo = {
 
 console.log(foo); // {"": ""}
 ```
+
+# 10-08
+
+```javascript
+var foo = {
+    0: 1,
+    1: 2,
+    2: 3,
+};
+
+console.log(foo); // {0: 1, 1: 2, 2: 3}
+```
+
+# 10-09
+
+```javascript
+var foo = {
+    var: "",
+    function: "",
+};
+
+console.log(foo); // {var: "", function: ""}
+```
