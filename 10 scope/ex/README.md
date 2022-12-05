@@ -96,3 +96,30 @@ var foo = {
 
 console.log(foo); // {var: "", function: ""}
 ```
+
+# 10-10
+
+```javascript
+var foo = {
+    name: "Lee",
+    name: "Kim",
+};
+
+console.log(foo); // {name: "Kim"}
+```
+
+# 10-11
+
+```javascript
+var circle = {
+    radius: 5, // ← 프로퍼티
+
+    // 원의 지름
+    getDiameter: function () {
+        // ← 메서드
+        return 2 * this.radius; // this는 circle을 가리킨다.
+    },
+};
+
+console.log(circle.getDiameter()); // 10
+```
