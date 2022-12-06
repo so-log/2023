@@ -123,3 +123,37 @@ var circle = {
 
 console.log(circle.getDiameter()); // 10
 ```
+
+# 10-12
+
+```javascript
+var person = {
+    name: "Lee",
+};
+
+// 마침표 표기법에 의한 프로퍼티 접근
+console.log(person.name); // Lee
+
+// 대괄호 표기법에 의한 프로퍼티 접근
+console.log(person["name"]); // Lee
+```
+
+# 10-13
+
+```javascript
+var person = {
+    name: "Lee",
+};
+
+console.log(person[name]); // ReferenceError: name is not defined
+```
+
+# 10-14
+
+```javascript
+var person = {
+    name: "Lee",
+};
+
+console.log(person.age); // undefined
+```
