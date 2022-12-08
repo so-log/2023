@@ -157,3 +157,51 @@ var person = {
 
 console.log(person.age); // undefined
 ```
+
+# 10-15
+
+```javascript
+var person = {
+  'last-name': 'Lee',
+  1: 10
+};
+
+person.'last-name';  // -> SyntaxError: Unexpected string
+person.last-name;    // -> 브라우저 환경: NaN
+                     // -> Node.js 환경: ReferenceError: name is not defined
+person[last-name];   // -> ReferenceError: last is not defined
+person['last-name']; // -> Lee
+
+// 프로퍼티 키가 숫자로 이뤄진 문자열인 경우 따옴표를 생략할 수 있다.
+person.1;     // -> SyntaxError: Unexpected number
+person.'1';   // -> SyntaxError: Unexpected string
+person[1];    // -> 10 : person[1] -> person['1']
+person['1'];  // -> 10
+```
+
+# 10-16
+
+```javascript
+var person = {
+    name: "Lee",
+};
+
+// person 객체에 name 프로퍼티가 존재하므로 name 프로퍼티의 값이 갱신된다.
+person.name = "Kim";
+
+console.log(person); // {name: "Kim"}
+```
+
+# 10-17
+
+```javascript
+var person = {
+    name: "Lee",
+};
+
+// person 객체에는 age 프로퍼티가 존재하지 않는다.
+// 따라서 person 객체에 age 프로퍼티가 동적으로 생성되고 값이 할당된다.
+person.age = 20;
+
+console.log(person); // {name: "Lee", age: 20}
+```
