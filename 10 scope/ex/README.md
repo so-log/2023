@@ -241,3 +241,33 @@ var obj = {
 
 console.log(obj); // {x: 1, y: 2}
 ```
+
+# 10-20
+
+```javascript
+// ES6
+let x = 1,
+    y = 2;
+
+// 프로퍼티 축약 표현
+const obj = { x, y };
+
+console.log(obj); // {x: 1, y: 2}
+```
+
+# 10-21
+
+```javascript
+// ES5
+var prefix = "prop";
+var i = 0;
+
+var obj = {};
+
+// 계산된 프로퍼티 이름으로 프로퍼티 키 동적 생성
+obj[prefix + "-" + ++i] = i;
+obj[prefix + "-" + ++i] = i;
+obj[prefix + "-" + ++i] = i;
+
+console.log(obj); // {prop-1: 1, prop-2: 2, prop-3: 3}
+```
