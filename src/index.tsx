@@ -4,6 +4,8 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Calendar from "./components/Calendar";
 import { RecoilRoot } from "recoil";
+import TodoFormModal from "./features/TodoFormModal";
+import TodoStatisticsModal from "./features/TodoStatisticsModal";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,6 +14,8 @@ root.render(
   <React.StrictMode>
     <RecoilRoot>
       <Calendar />
+      <TodoFormModal />
+      <TodoStatisticsModal />
     </RecoilRoot>
   </React.StrictMode>
 );
