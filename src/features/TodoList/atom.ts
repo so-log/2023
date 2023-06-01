@@ -9,7 +9,6 @@ export interface Todo {
 }
 
 export const todoListState = atom<Array<Todo>>({
-  // 할 일 목록
   key: "todoListState",
   default: [],
 });
